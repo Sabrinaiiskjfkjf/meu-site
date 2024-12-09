@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parabéns pela A.I!</title>
+    <style>
+        @font-face {
+            font-family: 'New York Font';
+            src: url('https://example.com/path-to-new-york-font.ttf') format('truetype'); /* Atualize o URL com o caminho real da fonte */
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #242424; /* Cinza Escuro */
+            font-family: 'Arial', sans-serif;
+            color: #FFFFFF;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        .button {
+            font-size: 2em;
+            padding: 0.5em 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0.5em 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            visibility: hidden;
+        }
+        p {
+            font-size: 1.5em;
+            visibility: hidden;
+        }
+        img {
+            margin-top: 1em;
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div id="initial-screen" class="container">
+        <button class="button" onclick="showMessageScreen()">Clique em mim</button>
+    </div>
+
+    <div id="message-screen" class="container hidden">
+        <h1 id="main-title"></h1>
+        <p id="main-message"></p>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPGXZJApJ6iv3HE1-el0VwqNYcVF9hfJfgvbVUQlHd6ywOJHCaEZsdpw7-2UipoCLnQBWcqJcZB5N_WaTRxBwQIshpNJZN4sLWcX7oEbg8F-jXHWZJJ40YJUs2PMl9LkfwDLHEnBoPU3j-8Zi6ikqvV=w1216-h913-s-no-gm?authuser=1" alt="Foto especial">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN5kyGpCEzRQcfADRIaIxEQ5tCqt2SW7RiXCJ77yrjZyOHB7_NiLZfVCKRdxDbXuDsLAL2TXYmDRDIxemSuB08UA5VOs3ASAdIUptaBMRDLaVHDU8-3rHdcrrRMhlj43_m1Wdgge0YBIGH-YAJrsW7r=w685-h913-s-no-gm?authuser=1" alt="Foto adicional">
+    </div>
+
+    <script>
+        function showMessageScreen() {
+            document.getElementById('initial-screen').classList.add('hidden');
+            document.getElementById('message-screen').classList.remove('hidden');
+
+            const title = document.getElementById('main-title');
+            const message = document.getElementById('main-message');
+
+            const titleText = "🎉 Parabéns pela A.I, meu amor! 🎉";
+            const messageText = "Te desejo todo sucesso do mundo, minha vida. Você é grande, cara. Te amo! 💖";
+
+            typeWriter(title, titleText, 100);
+            setTimeout(() => {
+                typeWriter(message, messageText, 100);
+            }, titleText.length * 100 + 500); // Aguarda terminar o título antes de começar a mensagem
+        }
+
+        function typeWriter(element, text, delay = 100) {
+            let i = 0;
+            element.style.visibility = 'visible';
+            element.textContent = ""; // Limpa qualquer texto anterior
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, delay);
+        }
+    </script>
+</body>
+</html>
